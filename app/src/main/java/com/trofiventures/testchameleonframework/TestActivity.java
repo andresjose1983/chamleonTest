@@ -10,12 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.facebook.stetho.Stetho;
-import com.trofiventures.chameleon.Theme;
 import com.trofiventures.testchameleonframework.viewmodel.TestViewModel;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -39,32 +36,12 @@ public class TestActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable HashMap<String, String> theme) {
                 Log.d("chameleon", "" + theme.size());
-                Iterator it = theme.entrySet().iterator();
-                while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry) it.next();
-                    switch (pair.getKey().toString()) {
-                        //Theme.BOTTOM_NAVIGATION_ITEM_NORMAL_COLOR
-                        //Theme.TOOLBAR_TITLE_COLOR
-                        //Theme.TOOLBAR_ICON_COLOR
-                        /**
-                         * In this class "Theme" we have all the options for change color and images components
-                         * - Toolbar (icon tint and title text color)
-                         * - TabLayout (backgroundColor and textColor)
-                         * - FloatingActionButton (background and tint color)
-                         * - BottomNavigationView (background color, unselected and select item color)
-                         * - NavigationView (background color, icon and text color)
-                         * - EditText text color
-                         * - TextInputLayout text color and focus color
-                         * - ImageView
-                         * - Change border color for a view VIEW_BORDER_COLOR
-                         * - Change backgroundColor for a view VIEW_BACKGROUND_COLOR
-                         */
-                        case Theme.TOOLBAR_BACKGROUND_COLOR:
-                            // change background color for toolbar object
-                            toolbar.setBackgroundColor(Color.parseColor(pair.getValue().toString()));
-                            break;
-                    }
-                }
+
+                toolbar.setBackgroundColor(Color.parseColor(theme.get("navigationBar.backgroundColor")));
+
+                toolbar.setTitleTextColor(Color.parseColor(theme.get("navigationBar.textColor")));
+
+                findViewById(R.id.main_view).setBackgroundColor(Color.parseColor(theme.get("common.backgroundColor")));
             }
         });
     }
