@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.facebook.stetho.Stetho;
 import com.trofiventures.testchameleonframework.viewmodel.TestViewModel;
 
 import java.util.HashMap;
@@ -23,7 +22,6 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // only for test
-        Stetho.initializeWithDefaults(this);
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
