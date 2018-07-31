@@ -56,7 +56,6 @@ open class ChameleonViewModel : ViewModel() {
                 }
             }
         }
-
     }
 
     /**
